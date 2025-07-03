@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "meow",
+  "version": "${version}",
+  "name": "meow",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "assets/meow/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "net.TrxaXe.meow.client.MeowClient"
+    ],
+    "main": [
+      "net.TrxaXe.meow.Meow"
+    ]
+  },
+  "mixins": [
+    "meow.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.10",
+    "fabric": "*",
+    "minecraft": ">=1.21.4"
+  }
+}
