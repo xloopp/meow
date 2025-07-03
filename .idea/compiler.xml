@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel target="21" />
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_STRING" value="&quot;-AoutRefMapFile=D:\idea\IntelliJ IDEA Community Edition 2024.3.5\projects\meow\build\classes\java\main\meow-refmap.json&quot; -AdefaultObfuscationEnv=named:intermediary -Aquiet=true &quot;-AoutMapFileNamedIntermediary=D:\idea\IntelliJ IDEA Community Edition 2024.3.5\projects\meow\build\loom-cache\mixin-map-net.fabricmc.yarn.1_21_5.1.21.5+build.1-v2.main.tiny&quot; -AinMapFileNamedIntermediary=C:\Users\张建青\.gradle\caches\fabric-loom\1.21.5\net.fabricmc.yarn.1_21_5.1.21.5+build.1-v2\mappings.tiny" />
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="meow.test" options="&quot;-AoutRefMapFile=D:\idea\IntelliJ IDEA Community Edition 2024.3.5\projects\meow\build\classes\java\test\test-meow-refmap.json&quot; -AdefaultObfuscationEnv=named:intermediary -Aquiet=true &quot;-AoutMapFileNamedIntermediary=D:\idea\IntelliJ IDEA Community Edition 2024.3.5\projects\meow\build\loom-cache\mixin-map-net.fabricmc.yarn.1_21_5.1.21.5+build.1-v2.test.tiny&quot; -AinMapFileNamedIntermediary=C:\Users\张建青\.gradle\caches\fabric-loom\1.21.5\net.fabricmc.yarn.1_21_5.1.21.5+build.1-v2\mappings.tiny" />
+    </option>
+  </component>
+</project>
