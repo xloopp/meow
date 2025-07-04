@@ -30,7 +30,7 @@ public abstract class mixin {
                 switch (chatText.charAt(0)) {
                     case '?', '.', '。', '!', '(', ')':
                         if (addToHistory) this.client.inGameHud.getChatHud().addToMessageHistory(chatText);
-                        this.client.player.networkHandler.sendChatMessage(config.Suffix.charAt(0) + chatText);
+                        if (config.Suffix != null) this.client.player.networkHandler.sendChatMessage(config.Suffix.charAt(0) + chatText);
                         ci.cancel();
                         break;
                     default:
@@ -43,7 +43,7 @@ public abstract class mixin {
                             case '?', '.', '!', '。', '(', ')':
                                 char tmp = chatText.charAt(chatText.length() - 1);
                                 chatText = chatText.substring(0, chatText.length() - 1);
-                                this.client.player.networkHandler.sendChatMessage(chatText + config.Suffix.charAt(0) + tmp);
+                                if (config.Suffix != null) this.client.player.networkHandler.sendChatMessage(chatText + config.Suffix.charAt(0) + tmp);
                                 break;
                             default:
                                 this.client.player.networkHandler.sendChatMessage(chatText + config.Suffix);
