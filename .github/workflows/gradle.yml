@@ -41,5 +41,5 @@ jobs:
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
-        name: meow-1.0-1.21.5.jar
+        name: meow-1.0
         path: ./build/libs/
