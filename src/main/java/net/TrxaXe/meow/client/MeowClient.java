@@ -1,10 +1,11 @@
 package net.TrxaXe.meow.client;
 
+import me.shedaniel.autoconfig.AutoConfig;
+import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandManager;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
 import net.minecraft.text.Text;
-
 public class MeowClient implements ClientModInitializer {
 
     public static boolean MeowMode;
@@ -23,5 +24,6 @@ public class MeowClient implements ClientModInitializer {
                             return 1;
                         }
                 )));
+        AutoConfig.register(config.class, GsonConfigSerializer::new);
     }
 }
