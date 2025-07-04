@@ -36,8 +36,8 @@ public abstract class mixin {
                     default:
                         if (addToHistory) this.client.inGameHud.getChatHud().addToMessageHistory(chatText);
                         if (config.Filter) {
-                            chatText = chatText.replaceAll("(?<!\\w)c+(?!\\w)", config.Replacement);
-                            chatText = chatText.replaceAll("(?<!\\w)草+(?!\\w)", config.Replacement);
+                            chatText = chatText.replaceAll(config.Regex1, config.Replacement);
+                            chatText = chatText.replaceAll(config.Regex2, config.Replacement);
                         }
                         switch (chatText.charAt(chatText.length() - 1)) {
                             case '?', '.', '!', '。', '(', ')':

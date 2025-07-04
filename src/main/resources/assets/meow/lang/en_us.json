@@ -3,5 +3,7 @@
   "text.autoconfig.Meow.option.MeowMode": "MeowMode",
   "text.autoconfig.Meow.option.Filter": "Filter",
   "text.autoconfig.Meow.option.Replacement": "Replacement",
-  "text.autoconfig.Meow.option.Suffix": "Suffix"
+  "text.autoconfig.Meow.option.Suffix": "Suffix",
+  "text.autoconfig.Meow.option.Regex1": "Regex1",
+  "text.autoconfig.Meow.option.Regex2": "Regex2"
 }
