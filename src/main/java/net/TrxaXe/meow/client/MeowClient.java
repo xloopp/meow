@@ -1,6 +1,7 @@
 package net.TrxaXe.meow.client;
 
 import me.shedaniel.autoconfig.AutoConfig;
+import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandManager;
@@ -24,6 +25,7 @@ public class MeowClient implements ClientModInitializer {
                             return 1;
                         }
                 )));
-        AutoConfig.register(config.class, GsonConfigSerializer::new);
+        AutoConfig.register(ModConfig.class, GsonConfigSerializer::new);
+        ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
     }
 }
