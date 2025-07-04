@@ -2,7 +2,8 @@
   "text.autoconfig.Meow.title": "Config Title",
   "text.autoconfig.Meow.option.MeowMode": "MeowMode",
   "text.autoconfig.Meow.option.Filter": "Filter",
-  "text.autoconfig.Meow.option.Replacement": "Replacement",
+  "text.autoconfig.Meow.option.Replacement1": "Replacement1",
+  "text.autoconfig.Meow.option.Replacement2": "Replacement2",
   "text.autoconfig.Meow.option.Suffix": "Suffix",
   "text.autoconfig.Meow.option.Regex1": "Regex1",
   "text.autoconfig.Meow.option.Regex2": "Regex2"

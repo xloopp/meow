@@ -30,20 +30,20 @@ public abstract class mixin {
                 switch (chatText.charAt(0)) {
                     case '?', '.', '。', '!', '(', ')':
                         if (addToHistory) this.client.inGameHud.getChatHud().addToMessageHistory(chatText);
-                        this.client.player.networkHandler.sendChatMessage(config.Replacement + chatText);
+                        this.client.player.networkHandler.sendChatMessage(config.Suffix.charAt(0) + chatText);
                         ci.cancel();
                         break;
                     default:
                         if (addToHistory) this.client.inGameHud.getChatHud().addToMessageHistory(chatText);
                         if (config.Filter) {
-                            chatText = chatText.replaceAll(config.Regex1, config.Replacement);
-                            chatText = chatText.replaceAll(config.Regex2, config.Replacement);
+                            chatText = chatText.replaceAll(config.Regex1, config.Replacement1);
+                            chatText = chatText.replaceAll(config.Regex2, config.Replacement2);
                         }
                         switch (chatText.charAt(chatText.length() - 1)) {
                             case '?', '.', '!', '。', '(', ')':
                                 char tmp = chatText.charAt(chatText.length() - 1);
                                 chatText = chatText.substring(0, chatText.length() - 1);
-                                this.client.player.networkHandler.sendChatMessage(chatText + config.Replacement + tmp);
+                                this.client.player.networkHandler.sendChatMessage(chatText + config.Suffix.charAt(0) + tmp);
                                 break;
                             default:
                                 this.client.player.networkHandler.sendChatMessage(chatText + config.Suffix);

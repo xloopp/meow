@@ -9,7 +9,8 @@ public class ModConfig implements ConfigData {
      public boolean MeowMode = false;
      public boolean Filter = true;
      public String Suffix = "喵~";
-     public String Replacement = "喵";
+     public String Replacement1 = "喵";
+     public String Replacement2 = "喵";
      public String Regex1 = "(?<!\\w)c+(?!\\w)";
      public String Regex2 = "(?<!\\w)草+(?!\\w)";
 }
