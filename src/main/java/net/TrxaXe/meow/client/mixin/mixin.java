@@ -50,7 +50,7 @@ public abstract class mixin {
                         if (!Objects.equals(config.Suffix, "")) {
                             this.client.player.networkHandler.sendChatMessage(chatText + config.Suffix.charAt(0) + tmp);
                         } else {
-                            this.client.player.networkHandler.sendChatMessage(chatText);
+                            this.client.player.networkHandler.sendChatMessage(chatText + tmp);
                         }
                     } else  {
                         this.client.player.networkHandler.sendChatMessage(chatText + config.Suffix);
