@@ -1,4 +1,5 @@
 {
   "text.autoconfig.Meow.title": "Config Title",
-  "text.autoconfig.Meow.option.MeowMode": "MeowMode"
+  "text.autoconfig.Meow.option.MeowMode": "MeowMode",
+  "text.autoconfig.Meow.option.Filter": "Filter"
 }

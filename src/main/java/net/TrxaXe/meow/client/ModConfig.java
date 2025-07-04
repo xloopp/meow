@@ -7,4 +7,5 @@ import me.shedaniel.autoconfig.annotation.Config;
 @Config(name = "Meow")
 public class ModConfig implements ConfigData {
      boolean MeowMode = false;
+     boolean Filter = true;
 }

@@ -9,6 +9,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import static net.TrxaXe.meow.client.MeowClient.Filter;
 import static net.TrxaXe.meow.client.MeowClient.MeowMode;
 
 @Mixin(ChatScreen.class)
@@ -34,8 +35,10 @@ public abstract class mixin {
                         break;
                     default:
                         if (addToHistory) this.client.inGameHud.getChatHud().addToMessageHistory(chatText);
-                        chatText = chatText.replaceAll("(?<!\\w)c+(?!\\w)", "喵");
-                        chatText = chatText.replaceAll("(?<!\\w)草+(?!\\w)", "喵");
+                        if (Filter) {
+                            chatText = chatText.replaceAll("(?<!\\w)c+(?!\\w)", "喵");
+                            chatText = chatText.replaceAll("(?<!\\w)草+(?!\\w)", "喵");
+                        }
                         switch (chatText.charAt(chatText.length() - 1)) {
                             case '?', '.', '!', '。', '(', ')':
                                 char tmp = chatText.charAt(chatText.length() - 1);
