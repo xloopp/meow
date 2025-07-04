@@ -25,7 +25,7 @@ public abstract class mixin {
             ci.cancel();
             return;
         }
-        if (chatText.charAt(0) != '/'){
+        if (config.IgnoreChar.indexOf(chatText.charAt(0)) != -1) {
             if (!config.MeowMode) {
                 if (config.CharModify.indexOf(chatText.charAt(0)) != -1) {
                     if (addToHistory) this.client.inGameHud.getChatHud().addToMessageHistory(chatText);

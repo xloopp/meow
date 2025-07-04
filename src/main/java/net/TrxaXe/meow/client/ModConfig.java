@@ -12,6 +12,7 @@ public class ModConfig implements ConfigData {
      public boolean MeowMode = false;
      public boolean Replace = true;
      public String CharModify = "~?.!。()";
+     public String IgnoreChar = "/#";
      public String Suffix = "喵~";
      public List<String> ReplacementList = new ArrayList<>(List.of("喵","喵"));
      public List<String> RegexList = new ArrayList<>(List.of("(?<!\\w)草+(?!\\w)","(?<!\\w)c+(?!\\w)"));
