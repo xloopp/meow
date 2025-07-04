@@ -1,6 +1,8 @@
 package net.TrxaXe.meow.client.mixin;
 
+import me.shedaniel.autoconfig.AutoConfig;
 import net.TrxaXe.meow.client.Converter;
+import net.TrxaXe.meow.client.ModConfig;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.ChatScreen;
 import org.spongepowered.asm.mixin.Mixin;
@@ -21,12 +23,13 @@ public abstract class mixin {
 
     @Inject(method = "sendMessage", at = @At("HEAD"), cancellable = true)
     public void sendMessage(String chatText, boolean addToHistory, CallbackInfo ci) {
+        ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
         if (chatText == null || chatText.isEmpty()) { // 检查 chatText 是否为空
             ci.cancel();
             return;
         }
         if (chatText.charAt(0) != '/'){
-            if (!MeowMode) {
+            if (!config.MeowMode) {
                 switch (chatText.charAt(0)) {
                     case '?', '.', '。', '!', '(', ')':
                         if (addToHistory) this.client.inGameHud.getChatHud().addToMessageHistory(chatText);
@@ -35,7 +38,7 @@ public abstract class mixin {
                         break;
                     default:
                         if (addToHistory) this.client.inGameHud.getChatHud().addToMessageHistory(chatText);
-                        if (Filter) {
+                        if (config.Filter) {
                             chatText = chatText.replaceAll("(?<!\\w)c+(?!\\w)", "喵");
                             chatText = chatText.replaceAll("(?<!\\w)草+(?!\\w)", "喵");
                         }
