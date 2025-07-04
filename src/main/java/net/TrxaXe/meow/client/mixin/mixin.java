@@ -27,28 +27,26 @@ public abstract class mixin {
         }
         if (chatText.charAt(0) != '/'){
             if (!config.MeowMode) {
-                switch (chatText.charAt(0)) {
-                    case '?', '.', '。', '!', '(', ')':
-                        if (addToHistory) this.client.inGameHud.getChatHud().addToMessageHistory(chatText);
-                        if (config.Suffix != null) this.client.player.networkHandler.sendChatMessage(config.Suffix.charAt(0) + chatText);
-                        ci.cancel();
-                        break;
-                    default:
-                        if (addToHistory) this.client.inGameHud.getChatHud().addToMessageHistory(chatText);
-                        if (config.Filter) {
-                            chatText = chatText.replaceAll(config.Regex1, config.Replacement1);
-                            chatText = chatText.replaceAll(config.Regex2, config.Replacement2);
+                if (config.CharModify.indexOf(chatText.charAt(0)) != -1) {
+                    if (addToHistory) this.client.inGameHud.getChatHud().addToMessageHistory(chatText);
+                    if (config.Suffix != null)
+                        this.client.player.networkHandler.sendChatMessage(config.Suffix.charAt(0) + chatText);
+                    ci.cancel();
+                } else {
+                    if (addToHistory) this.client.inGameHud.getChatHud().addToMessageHistory(chatText);
+                    if (config.Replace) {
+                        for (int i = 0;i < config.RegexList.size();i++ ) {
+                            if (config.ReplacementList.get(i) != null) chatText = chatText.replaceAll(config.RegexList.get(i), config.ReplacementList.get(i));
                         }
-                        switch (chatText.charAt(chatText.length() - 1)) {
-                            case '?', '.', '!', '。', '(', ')':
-                                char tmp = chatText.charAt(chatText.length() - 1);
-                                chatText = chatText.substring(0, chatText.length() - 1);
-                                if (config.Suffix != null) this.client.player.networkHandler.sendChatMessage(chatText + config.Suffix.charAt(0) + tmp);
-                                break;
-                            default:
-                                this.client.player.networkHandler.sendChatMessage(chatText + config.Suffix);
-                        }
-                        ci.cancel();
+                    }
+                    if (config.CharModify.indexOf(chatText.charAt(chatText.length() - 1)) != -1) {
+                        char tmp = chatText.charAt(chatText.length() - 1);
+                        chatText = chatText.substring(0, chatText.length() - 1);
+                        if (config.Suffix != null) this.client.player.networkHandler.sendChatMessage(chatText + config.Suffix.charAt(0) + tmp);
+                    } else  {
+                        this.client.player.networkHandler.sendChatMessage(chatText + config.Suffix);
+                    }
+                    ci.cancel();
                 }
             } else {
                 if (addToHistory) this.client.inGameHud.getChatHud().addToMessageHistory(chatText);
