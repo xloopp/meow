@@ -41,5 +41,5 @@ jobs:
     - name: Download artifact
       uses: actions/download-artifact@v4
       with:
-        name: *
+        name: meow-1.0-1.21.5.jar
         path: ./build/libs
