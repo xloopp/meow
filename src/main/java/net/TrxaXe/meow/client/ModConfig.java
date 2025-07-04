@@ -8,4 +8,6 @@ import me.shedaniel.autoconfig.annotation.Config;
 public class ModConfig implements ConfigData {
      public boolean MeowMode = false;
      public boolean Filter = true;
+     public String Suffix = "喵~";
+     public String Replacement = "喵";
 }

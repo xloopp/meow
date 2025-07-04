@@ -11,9 +11,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import static net.TrxaXe.meow.client.MeowClient.Filter;
-import static net.TrxaXe.meow.client.MeowClient.MeowMode;
-
 @Mixin(ChatScreen.class)
 public abstract class mixin {
 
@@ -33,23 +30,23 @@ public abstract class mixin {
                 switch (chatText.charAt(0)) {
                     case '?', '.', '。', '!', '(', ')':
                         if (addToHistory) this.client.inGameHud.getChatHud().addToMessageHistory(chatText);
-                        this.client.player.networkHandler.sendChatMessage("喵" + chatText);
+                        this.client.player.networkHandler.sendChatMessage(config.Replacement + chatText);
                         ci.cancel();
                         break;
                     default:
                         if (addToHistory) this.client.inGameHud.getChatHud().addToMessageHistory(chatText);
                         if (config.Filter) {
-                            chatText = chatText.replaceAll("(?<!\\w)c+(?!\\w)", "喵");
-                            chatText = chatText.replaceAll("(?<!\\w)草+(?!\\w)", "喵");
+                            chatText = chatText.replaceAll("(?<!\\w)c+(?!\\w)", config.Replacement);
+                            chatText = chatText.replaceAll("(?<!\\w)草+(?!\\w)", config.Replacement);
                         }
                         switch (chatText.charAt(chatText.length() - 1)) {
                             case '?', '.', '!', '。', '(', ')':
                                 char tmp = chatText.charAt(chatText.length() - 1);
                                 chatText = chatText.substring(0, chatText.length() - 1);
-                                this.client.player.networkHandler.sendChatMessage(chatText + "喵" + tmp);
+                                this.client.player.networkHandler.sendChatMessage(chatText + config.Replacement + tmp);
                                 break;
                             default:
-                                this.client.player.networkHandler.sendChatMessage(chatText + "喵~");
+                                this.client.player.networkHandler.sendChatMessage(chatText + config.Suffix);
                         }
                         ci.cancel();
                 }
