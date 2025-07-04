@@ -3,6 +3,7 @@
   "text.autoconfig.Meow.option.MeowMode": "MeowMode",
   "text.autoconfig.Meow.option.Replace": "Replace",
   "text.autoconfig.Meow.option.CharModify": "Char modify",
+  "text.autoconfig.Meow.option.IgnoreChar": "Ignore char",
   "text.autoconfig.Meow.option.ReplacementList": "Replacement list",
   "text.autoconfig.Meow.option.Suffix": "Suffix",
   "text.autoconfig.Meow.option.RegexList": "Regex list"
