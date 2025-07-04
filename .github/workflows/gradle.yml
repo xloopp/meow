@@ -38,7 +38,7 @@ jobs:
 
     # The USERNAME and TOKEN need to correspond to the credentials environment variables used in
     # the publishing section of your build.gradle
-    - name: upload artifact
+    - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
         name: meow-1.0-1.21.5.jar
