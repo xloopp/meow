@@ -11,6 +11,8 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import java.util.Objects;
+
 @Mixin(ChatScreen.class)
 public abstract class mixin {
 
@@ -29,8 +31,11 @@ public abstract class mixin {
             if (!config.MeowMode) {
                 if (config.CharModify.indexOf(chatText.charAt(0)) != -1) {
                     if (addToHistory) this.client.inGameHud.getChatHud().addToMessageHistory(chatText);
-                    if (config.Suffix != null)
+                    if (!Objects.equals(config.Suffix, "")) {
                         this.client.player.networkHandler.sendChatMessage(config.Suffix.charAt(0) + chatText);
+                    } else {
+                        this.client.player.networkHandler.sendChatMessage(chatText);
+                    }
                     ci.cancel();
                 } else {
                     if (addToHistory) this.client.inGameHud.getChatHud().addToMessageHistory(chatText);
@@ -42,7 +47,11 @@ public abstract class mixin {
                     if (config.CharModify.indexOf(chatText.charAt(chatText.length() - 1)) != -1) {
                         char tmp = chatText.charAt(chatText.length() - 1);
                         chatText = chatText.substring(0, chatText.length() - 1);
-                        if (config.Suffix != null) this.client.player.networkHandler.sendChatMessage(chatText + config.Suffix.charAt(0) + tmp);
+                        if (!Objects.equals(config.Suffix, "")) {
+                            this.client.player.networkHandler.sendChatMessage(chatText + config.Suffix.charAt(0) + tmp);
+                        } else {
+                            this.client.player.networkHandler.sendChatMessage(chatText);
+                        }
                     } else  {
                         this.client.player.networkHandler.sendChatMessage(chatText + config.Suffix);
                     }
