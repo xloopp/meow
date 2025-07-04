@@ -6,5 +6,5 @@ import me.shedaniel.autoconfig.annotation.Config;
 // How to add a config
 @Config(name = "Meow")
 public class ModConfig implements ConfigData {
-     boolean MeowMode = true;
+     boolean MeowMode = false;
 }
