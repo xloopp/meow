@@ -1,7 +1,7 @@
 package net.TrxaXe.meow.client;
 import java.util.Random;
 
-public class Converter {
+public class AisConverter {
     // 可爱的后缀词库
     private static final String[] NEKO_SUFFIXES = {
             "喵~", "喵！", "喵...", "~喵", "=^･ω･^=", " (ฅ´ω`ฅ)", " (≧▽≦)",

@@ -1,7 +1,7 @@
 package net.TrxaXe.meow.client.mixin;
 
 import me.shedaniel.autoconfig.AutoConfig;
-import net.TrxaXe.meow.client.Converter;
+import net.TrxaXe.meow.client.AisConverter;
 import net.TrxaXe.meow.client.ModConfig;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.ChatScreen;
@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.Objects;
 
 @Mixin(ChatScreen.class)
-public abstract class mixin {
+public abstract class ChatMixin {
 
     @Unique
     protected final MinecraftClient client = MinecraftClient.getInstance();
@@ -59,7 +59,7 @@ public abstract class mixin {
                 }
             } else {
                 if (addToHistory) this.client.inGameHud.getChatHud().addToMessageHistory(chatText);
-                chatText = Converter.Catgirl(chatText);
+                chatText = AisConverter.Catgirl(chatText);
                 this.client.player.networkHandler.sendChatMessage(chatText);
                 ci.cancel();
             }
