@@ -4,6 +4,7 @@
   "package": "net.TrxaXe.meow.client.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "PlayerMixin"
   ],
   "client": [
     "ChatMixin"

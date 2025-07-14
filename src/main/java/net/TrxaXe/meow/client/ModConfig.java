@@ -11,6 +11,7 @@ import java.util.List;
 public class ModConfig implements ConfigData {
      public boolean MeowMode = false;
      public boolean Replace = true;
+     public Float PlayerScale = 1.0F;
      public String CharModify = "~?.!。()";
      public String IgnoreChar = "/#";
      public String Suffix = "喵~";
