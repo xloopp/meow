@@ -18,7 +18,7 @@ public class PlayerMixin {
         LivingEntity entity = (LivingEntity)(Object)this;
         if (entity instanceof PlayerEntity) {
             MinecraftClient client = MinecraftClient.getInstance();
-            if (entity == client.player) {
+            if (entity == client.player && config.ModifyPlayerScale) {
                 cir.setReturnValue(config.PlayerScale);
             }
         }
