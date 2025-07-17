@@ -12,6 +12,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.Objects;
+import java.util.regex.Pattern;
 
 @Mixin(ChatScreen.class)
 public abstract class ChatMixin {
@@ -28,7 +29,7 @@ public abstract class ChatMixin {
             return;
         }
         if (config.IgnoreChar.indexOf(chatText.charAt(0)) == -1) {
-            if (!config.MeowMode) {
+            if (!config.AiMeowMode && !config.MeowMode) {
                 if (config.CharModify.indexOf(chatText.charAt(0)) != -1) {
                     if (addToHistory) this.client.inGameHud.getChatHud().addToMessageHistory(chatText);
                     if (!Objects.equals(config.Suffix, "")) {
@@ -58,10 +59,17 @@ public abstract class ChatMixin {
                     ci.cancel();
                 }
             } else {
-                if (addToHistory) this.client.inGameHud.getChatHud().addToMessageHistory(chatText);
-                chatText = AisConverter.Catgirl(chatText);
-                this.client.player.networkHandler.sendChatMessage(chatText);
-                ci.cancel();
+                if (config.MeowMode) {
+                    if (addToHistory) this.client.inGameHud.getChatHud().addToMessageHistory(chatText);
+                    chatText = chatText.replaceAll("[^" + Pattern.quote(config.IgnoreChar) + "]","喵");
+                    this.client.player.networkHandler.sendChatMessage(chatText);
+                    ci.cancel();
+                } else {
+                    if (addToHistory) this.client.inGameHud.getChatHud().addToMessageHistory(chatText);
+                    chatText = AisConverter.Catgirl(chatText);
+                    this.client.player.networkHandler.sendChatMessage(chatText);
+                    ci.cancel();
+                }
             }
         }
     }

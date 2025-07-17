@@ -9,6 +9,7 @@ import java.util.List;
 // How to add a config
 @Config(name = "Meow")
 public class ModConfig implements ConfigData {
+     public boolean AiMeowMode = false;
      public boolean MeowMode = false;
      public boolean Replace = true;
      public boolean ModifyPlayerScale = false;

@@ -15,7 +15,7 @@ public class PlayerMixin {
     @Inject(at = @At("HEAD"), method = "getScale", cancellable = true)
     public void ModifyScale(CallbackInfoReturnable<Float> cir) {
         ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
-        LivingEntity entity = (LivingEntity)(Object)this;
+        LivingEntity entity = (LivingEntity) (Object) this;
         if (entity instanceof PlayerEntity) {
             MinecraftClient client = MinecraftClient.getInstance();
             if (entity == client.player && config.ModifyPlayerScale) {

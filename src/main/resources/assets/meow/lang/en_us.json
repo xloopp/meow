@@ -1,5 +1,6 @@
 {
   "text.autoconfig.Meow.title": "Config Title",
+  "text.autoconfig.Meow.option.AiMeowMode": "AiMeowMode",
   "text.autoconfig.Meow.option.MeowMode": "MeowMode",
   "text.autoconfig.Meow.option.Replace": "Replace",
   "text.autoconfig.Meow.option.ModifyPlayerScale": "Modify player scale",
