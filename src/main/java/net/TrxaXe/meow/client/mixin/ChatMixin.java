@@ -61,7 +61,7 @@ public abstract class ChatMixin {
             } else {
                 if (config.MeowMode) {
                     if (addToHistory) this.client.inGameHud.getChatHud().addToMessageHistory(chatText);
-                    chatText = chatText.replaceAll("[^" + Pattern.quote(config.CharModify) + "]","喵");
+                    chatText = chatText.replaceAll("[^" + Pattern.quote(config.CharModify) + " ]","喵");
                     this.client.player.networkHandler.sendChatMessage(chatText);
                     ci.cancel();
                 } else {
