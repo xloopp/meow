@@ -33,9 +33,9 @@ public abstract class ChatMixin {
                 if (config.CharModify.indexOf(chatText.charAt(0)) != -1) {
                     if (addToHistory) this.client.inGameHud.getChatHud().addToMessageHistory(chatText);
                     if (!Objects.equals(config.Suffix, "")) {
-                        this.client.player.networkHandler.sendChatMessage(config.Suffix.charAt(0) + chatText);
+                        this.client.player.networkHandler.sendChatMessage(config.Suffix.charAt(0) + chatText.trim());
                     } else {
-                        this.client.player.networkHandler.sendChatMessage(chatText);
+                        this.client.player.networkHandler.sendChatMessage(chatText.trim());
                     }
                     ci.cancel();
                 } else {
@@ -49,12 +49,12 @@ public abstract class ChatMixin {
                         char tmp = chatText.charAt(chatText.length() - 1);
                         chatText = chatText.substring(0, chatText.length() - 1);
                         if (!Objects.equals(config.Suffix, "")) {
-                            this.client.player.networkHandler.sendChatMessage(chatText + config.Suffix.charAt(0) + tmp);
+                            this.client.player.networkHandler.sendChatMessage(chatText.trim() + config.Suffix.charAt(0) + tmp);
                         } else {
-                            this.client.player.networkHandler.sendChatMessage(chatText + tmp);
+                            this.client.player.networkHandler.sendChatMessage(chatText.trim() + tmp);
                         }
                     } else  {
-                        this.client.player.networkHandler.sendChatMessage(chatText + config.Suffix);
+                        this.client.player.networkHandler.sendChatMessage(chatText.trim() + config.Suffix);
                     }
                     ci.cancel();
                 }
@@ -62,12 +62,12 @@ public abstract class ChatMixin {
                 if (config.MeowMode) {
                     if (addToHistory) this.client.inGameHud.getChatHud().addToMessageHistory(chatText);
                     chatText = chatText.replaceAll("[^" + Pattern.quote(config.CharModify) + " ]","喵");
-                    this.client.player.networkHandler.sendChatMessage(chatText);
+                    this.client.player.networkHandler.sendChatMessage(chatText.trim());
                     ci.cancel();
                 } else {
                     if (addToHistory) this.client.inGameHud.getChatHud().addToMessageHistory(chatText);
                     chatText = AisConverter.Catgirl(chatText);
-                    this.client.player.networkHandler.sendChatMessage(chatText);
+                    this.client.player.networkHandler.sendChatMessage(chatText.trim());
                     ci.cancel();
                 }
             }
