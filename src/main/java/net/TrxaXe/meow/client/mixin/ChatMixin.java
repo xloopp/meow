@@ -12,7 +12,6 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.Objects;
-import java.util.regex.Pattern;
 
 @Mixin(ChatScreen.class)
 public abstract class ChatMixin {
@@ -20,10 +19,10 @@ public abstract class ChatMixin {
     @Unique
     protected final MinecraftClient client = MinecraftClient.getInstance();
 
-
     @Inject(method = "sendMessage", at = @At("HEAD"), cancellable = true)
     public void sendMessage(String chatText, boolean addToHistory, CallbackInfo ci) {
         ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
+        StringBuilder chatTextbin = new StringBuilder();
         if (chatText == null || chatText.isEmpty()) { // 检查 chatText 是否为空
             ci.cancel();
             return;
@@ -61,8 +60,15 @@ public abstract class ChatMixin {
             } else {
                 if (config.MeowMode) {
                     if (addToHistory) this.client.inGameHud.getChatHud().addToMessageHistory(chatText);
-                    chatText = chatText.replaceAll("[^" + Pattern.quote(config.CharModify) + " ]","喵");
-                    this.client.player.networkHandler.sendChatMessage(chatText.trim());
+                    for (char c : chatText.toCharArray()) {
+                        if (config.CharModify.indexOf(c) != -1) {
+                            chatTextbin.append(c);
+                        } else {
+                            String binary = String.format("%16s", Integer.toBinaryString(c)).replace(' ', '0');
+                            chatTextbin.append(binary.replace('1', '喵').replace('0', '\u200C'));
+                        }
+                    }
+                    this.client.player.networkHandler.sendChatMessage(chatTextbin.toString().trim());
                     ci.cancel();
                 } else {
                     if (addToHistory) this.client.inGameHud.getChatHud().addToMessageHistory(chatText);
