@@ -13,6 +13,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.Objects;
 
+import static net.TrxaXe.meow.client.MeowMode.meow;
+
 @Mixin(ChatScreen.class)
 public abstract class ChatMixin {
 
@@ -22,7 +24,6 @@ public abstract class ChatMixin {
     @Inject(method = "sendMessage", at = @At("HEAD"), cancellable = true)
     public void sendMessage(String chatText, boolean addToHistory, CallbackInfo ci) {
         ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
-        StringBuilder chatTextbin = new StringBuilder();
         if (chatText == null || chatText.isEmpty()) { // 检查 chatText 是否为空
             ci.cancel();
             return;
@@ -60,15 +61,7 @@ public abstract class ChatMixin {
             } else {
                 if (config.MeowMode) {
                     if (addToHistory) this.client.inGameHud.getChatHud().addToMessageHistory(chatText);
-                    for (char c : chatText.toCharArray()) {
-                        if (config.CharModify.indexOf(c) != -1) {
-                            chatTextbin.append(c);
-                        } else {
-                            String binary = String.format("%16s", Integer.toBinaryString(c)).replace(' ', '0');
-                            chatTextbin.append(binary.replace('1', '喵').replace('0', '\u200C'));
-                        }
-                    }
-                    this.client.player.networkHandler.sendChatMessage(chatTextbin.toString().trim());
+                    this.client.player.networkHandler.sendChatMessage(meow(chatText));
                     ci.cancel();
                 } else {
                     if (addToHistory) this.client.inGameHud.getChatHud().addToMessageHistory(chatText);
