@@ -10,6 +10,7 @@ import java.util.List;
 @Config(name = "Meow")
 public class ModConfig implements ConfigData {
      public boolean AiMeowMode = false;
+     public boolean DecodeMeow = true;
      public boolean MeowMode = false;
      public boolean Replace = true;
      public boolean ModifyPlayerScale = false;
