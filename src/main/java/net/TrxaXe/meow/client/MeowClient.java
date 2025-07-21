@@ -22,9 +22,9 @@ public class MeowClient implements ClientModInitializer {
         ClientReceiveMessageEvents.MODIFY_GAME.register((message, overlay) -> {
             ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
             String s = message.getString();
-            Gson gson = new Gson();
-            String json = gson.toJson(TextCodecs.CODEC.encodeStart(JsonOps.INSTANCE, message).getOrThrow());
             if (s.indexOf('喵') != -1 && s.indexOf(' ') != -1 && s.indexOf('\u200C') != -1 && config.DecodeMeow) {
+                Gson gson = new Gson();
+                String json = gson.toJson(TextCodecs.CODEC.encodeStart(JsonOps.INSTANCE, message).getOrThrow());
                 Text DecodedMessage = TextCodecs.CODEC
                         .decode(JsonOps.INSTANCE, gson.fromJson(unmeow(json), JsonElement.class))
                         .getOrThrow()
