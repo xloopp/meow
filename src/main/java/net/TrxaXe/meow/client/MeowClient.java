@@ -7,8 +7,8 @@ import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.message.v1.ClientReceiveMessageEvents;
-import net.minecraft.text.Text;
-import net.minecraft.text.TextCodecs;
+import net.minecraft.text.*;
+import net.minecraft.util.Formatting;
 
 import java.util.logging.Logger;
 
@@ -29,6 +29,13 @@ public class MeowClient implements ClientModInitializer {
                         .decode(JsonOps.INSTANCE, gson.fromJson(unmeow(json), JsonElement.class))
                         .getOrThrow()
                         .getFirst();
+
+                Text HoverText = Text.literal(" 显示原文")
+                        .setStyle(Style.EMPTY.withHoverEvent(new HoverEvent.ShowText(message)))
+                        .formatted(Formatting.GRAY);
+                if (DecodeMeow.Modified) {
+                    return DecodedMessage.copy().append(HoverText);
+                }
                 return DecodedMessage;
             }
             return message;

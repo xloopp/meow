@@ -1,8 +1,10 @@
 package net.TrxaXe.meow.client;
 
 public class DecodeMeow {
+    public static boolean Modified = false;
     public static String unmeow(String text) {
         StringBuilder result = new StringBuilder();
+        Modified = false;
         int i = 0;
         if (text == null) {
             text = "";
@@ -40,6 +42,7 @@ public class DecodeMeow {
             try {
                 int charCode = Integer.parseInt(ternaryStr, 3);
                 result.append((char) charCode);
+                Modified = true;
             } catch (NumberFormatException e) {
                 result.append(meow);
             }
