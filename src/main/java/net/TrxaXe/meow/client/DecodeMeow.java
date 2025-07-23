@@ -41,6 +41,7 @@ public class DecodeMeow {
                     .replace('\u200C', '2');
             try {
                 int charCode = Integer.parseInt(ternaryStr, 3);
+                if ((char) charCode == '"' || (char) charCode == '\\') result.append('\\');
                 result.append((char) charCode);
                 Modified = true;
             } catch (NumberFormatException e) {

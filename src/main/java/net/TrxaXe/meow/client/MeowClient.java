@@ -19,6 +19,7 @@ public class MeowClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         AutoConfig.register(ModConfig.class, GsonConfigSerializer::new);
+        logger.info("Config registered.");
         ClientReceiveMessageEvents.MODIFY_GAME.register((message, overlay) -> {
             ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
             String s = message.getString();
